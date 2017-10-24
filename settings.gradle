@@ -1,0 +1,2 @@
+include ":app", ":basement"
+project(":basement").projectDir = new File("app/libs/basement")

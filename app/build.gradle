@@ -1,0 +1,68 @@
+apply plugin: "kotlin-android-extensions"
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+
+    compileOptions {
+        encoding "UTF-8"
+
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    defaultConfig {
+        applicationId "com.rollncode.chatVision"
+
+        minSdkVersion 19
+        targetSdkVersion 26
+
+        versionCode 1
+        versionName "0"
+
+        resConfigs "en"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        keystore {
+            storeFile file("release.keystore")
+
+            keyAlias "$KEYSTORE_ALIAS"
+            keyPassword "$KEYSTORE_PASS"
+            storePassword "$STORE_PASSWORD"
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.keystore
+            versionNameSuffix new Date().format(":MMdd-HH-")
+
+            debuggable true
+        }
+        release {
+            signingConfig signingConfigs.keystore
+            versionNameSuffix new Date().format(":MMddHH")
+
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+    kapt { correctErrorTypes = true }
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+}
+dependencies {
+    implementation project(":basement")
+
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation "com.android.support.test:runner:1.0.1"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.1"
+}

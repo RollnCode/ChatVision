@@ -1,0 +1,24 @@
+buildscript {
+    ext.supportVersion = "26.1.0"
+    ext.kotlinVersion = "1.1.51"
+    ext.rxVersion = "2.0.1"
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "com.android.tools.build:gradle:3.0.0-rc2"
+    }
+}
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
