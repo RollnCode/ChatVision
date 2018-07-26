@@ -1,9 +1,10 @@
 package com.rollncode.basement.adapter
 
-import android.content.*
-import android.support.v7.widget.*
-import android.view.*
-import com.rollncode.basement.interfaces.*
+import android.content.Context
+import android.support.v7.widget.RecyclerView
+import android.view.View
+import android.view.ViewGroup
+import com.rollncode.basement.interfaces.IDataTenant
 
 /**
  *
@@ -18,13 +19,11 @@ abstract class BaseRecyclerAdapter<in DATA>(vararg values: DATA)
     final override fun getItemCount(): Int
             = values.size
 
-    final override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        parent ?: throw NullPointerException("parent: ViewGroup")
+    final override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(onCreateView(parent.context, viewType))
     }
 
-    final override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        holder ?: throw NullPointerException("holder: RecyclerView.ViewHolder?")
+    final override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         onBindView(holder.itemView, position, values[position], holder.itemViewType)
     }
 

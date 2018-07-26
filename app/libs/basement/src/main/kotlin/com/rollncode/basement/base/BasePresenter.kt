@@ -1,8 +1,11 @@
 package com.rollncode.basement.base
 
-import com.rollncode.basement.interfaces.*
-import io.reactivex.*
-import io.reactivex.android.schedulers.*
+import com.rollncode.basement.interfaces.AsyncMVPInterface
+import io.reactivex.Completable
+import io.reactivex.Flowable
+import io.reactivex.Single
+import io.reactivex.SingleTransformer
+import io.reactivex.android.schedulers.AndroidSchedulers
 
 /**
  *
@@ -19,12 +22,17 @@ abstract class BasePresenter(private val mvp: AsyncMVPInterface) {
             .doFinally { mvp.setProgress(false) }
     }
 
-    protected fun <T> Single<T>.attachTransformer()
-            = this.compose(createRequestTransformer<T>())!!
+    private fun <T> Single<T>.attachTransformer(): Single<T>
+            = this.compose(createRequestTransformer<T>())
 
     protected fun <T> execute(request: Single<T>, success: (T) -> Unit, error: (Throwable) -> Unit = { mvp.onRequestError(it) }) {
-        mvp.add(request.attachTransformer()
+        mvp.addDisposable(request.attachTransformer()
             .subscribe({ success(it) }, { error(it) }))
+    }
+
+    protected fun execute(request: Completable, success: () -> Unit, error: (Throwable) -> Unit = { mvp.onRequestError(it) }) {
+        mvp.addDisposable(request.toSingleDefault(Unit).attachTransformer()
+            .subscribe({ success() }, { error(it) }))
     }
 
     protected abstract fun <T> createRetryPolicy(action: Flowable<Boolean>): SingleTransformer<T, T>

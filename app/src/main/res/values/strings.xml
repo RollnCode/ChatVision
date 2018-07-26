@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">Chat Vision</string>
+    
+    <string name="error_connection_fail">Network connection failure</string>
+    <string name="error_unknown">Unknown exception appears</string>
+    <string name="error_http">Http exception</string>
+    <string name="error_conversion">JSON parsing exception</string>
+    <string name="error_timeout">Timeout exception</string>
+    <string name="action_retry">Retry</string>
+    
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_close">Close</string>
+    <string name="btn_delete">Delete dialog?</string>
+    <string name="btn_accept">Accept</string>
+    <string name="btn_decline">Decline</string>
+    <string name="btn_read">Read</string>
+    
+    <string name="privacy_title">Privacy policy</string>
+    <string name="privacy_policy">Please, read and accept privacy policy terms</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="country">Country</string>
+    <string name="country_or_code">Country or code</string>
+    <string name="incognito_authorization">Incognito authorization</string>
+    <string name="sign_in">Sign in</string>
+    <string name="formatted_country_code">%1$s / +%2$s</string>
+    <string name="code">Code</string>
+    <string name="Resend">Resend</string>
+    <string name="Chat_rooms">Chat rooms</string>
+    <string name="name">Name</string>
+    <string name="email">E-mail</string>
+    <string name="offline">Offline</string>
+    <string name="create_chat">Create new chat</string>
+    <string name="send_sms_title">Select number to send sms</string>
+    <string name="sms_invitation_format">Hi, %1$s. Please, join me in Chat Vision: https://play.google.com/store/apps/details?id=com.rollncode.chatVision</string>
+    <string name="start_new_conversation">Start new conversation</string>
+    <string name="send_invitation">Send invitation</string>
+    <string name="name_of_new_dialog">Title of new chat</string>
+    <string name="public_dialog">Public chat</string>
+    <string name="create_dialog">Create new chat</string>
+    <string name="title_required">Title is required</string>
+    <string name="new_chat_with">New chat with:</string>
+    <string name="delete_profile">Delete profile</string>
+    <string name="delete_confirm">Are you sure you want to delete profile?</string>
+    <string name="help">Help</string>
+    <string name="help_content">Tap on list item to open/create dialog or send sms to some of your phone contacts.\n
+        Long tap allows you to delete chat if it\'s created by you.</string>
 </resources>

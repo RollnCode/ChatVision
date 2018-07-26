@@ -1,6 +1,8 @@
 package com.rollncode.basement.interfaces
 
-import android.support.v4.app.*
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentTransaction
 
 /**
  *
@@ -11,10 +13,10 @@ interface FragmentManagerInterface {
 
     fun getContainerId(): Int = 0
 
-    fun getSupportFragmentManager(): FragmentManager
+    fun getSupportFragmentManager(): FragmentManager?
 
     fun start(fragment: Fragment, addToBackStack: Boolean = true, block: (FragmentTransaction.() -> Unit)? = null) {
-        val manager = getSupportFragmentManager()
+        val manager = getSupportFragmentManager() ?: return
         if (!addToBackStack) {
             manager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
@@ -33,5 +35,5 @@ interface FragmentManagerInterface {
     }
 
     fun getFragmentFromContainer(): Fragment?
-            = getSupportFragmentManager().findFragmentById(getContainerId())
+            = getSupportFragmentManager()?.findFragmentById(getContainerId())
 }

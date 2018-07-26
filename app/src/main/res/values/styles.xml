@@ -1,8 +1,59 @@
 <resources>
     
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">?attr/aControlNormal</item>
+        <item name="android:textColorHint">@color/gray_light</item>
+        <item name="titleTextColor">@color/toolbarTextColor</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
+        <!--<item name="android:colorBackground">?attr/aBackGroundColor</item>-->
+        <item name="android:windowBackground">?attr/aBackGroundColor</item>
+    </style>
+    
+    <style name="AppTheme.Light">
+        <item name="aTextColor">@color/black</item>
+        <item name="aTextGreyColor">@color/gray_dark</item>
+        <item name="aBackGroundColor">@color/white</item>
+        <item name="aToolbarTextColor">@color/white</item>
+        <item name="aControlNormal">@color/black_gray</item>
+        <item name="alertDialogTheme">@style/Theme.AppCompat.Light.Dialog</item>
+    </style>
+    
+    <style name="AppTheme.Dark">
+        <item name="aTextColor">@color/white</item>
+        <item name="aTextGreyColor">@color/gray_light</item>
+        <item name="aBackGroundColor">@color/gray_dark</item>
+        <item name="aToolbarTextColor">@color/gray_dark</item>
+        <item name="aControlNormal">@color/gray_light</item>
+        <item name="alertDialogTheme">@style/Theme.AppCompat.Dialog</item>
+    </style>
+    
+    <style name="CustomLauncher" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+    
+    <style name="Base"/>
+    
+    <style name="Base.Text">
+        <item name="android:textColor">?attr/aTextColor</item>
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+    
+    <style name="Base.Hint">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">@dimen/font_10</item>
+    </style>
+    
+    <style name="Base.Button" parent="Base.Text">
+        <item name="android:background">@drawable/selector_button_common</item>
+    </style>
+    
+    <style name="SignIn"/>
+    
+    <style name="SignIn.Text" parent="Base.Text">
+        <item name="android:inputType">number</item>
     </style>
 </resources>

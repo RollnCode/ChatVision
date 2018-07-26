@@ -1,9 +1,11 @@
 package com.rollncode.basement.base
 
-import android.support.annotation.*
-import android.support.v7.app.*
-import com.rollncode.basement.interfaces.*
-import io.reactivex.disposables.*
+import android.support.annotation.CallSuper
+import android.support.v7.app.AppCompatActivity
+import com.rollncode.basement.interfaces.AsyncMVPInterface
+import com.rollncode.basement.interfaces.FragmentManagerInterface
+import com.rollncode.basement.interfaces.OnBackPressedListener
+import io.reactivex.disposables.CompositeDisposable
 
 /**
  *

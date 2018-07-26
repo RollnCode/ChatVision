@@ -3,13 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rollncode.chatVision">
     
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    
     <application
+        android:name="application.ChatApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"/>
+        android:theme="@style/AppTheme.Light"
+        tools:ignore="GoogleAppIndexingWarning">
+        
+        <activity
+            android:name="chapters.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomLauncher">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="chapters.signIn.SignInActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        
+        <activity
+            android:name="chapters.chatRoom.ChatRoomActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        
+        <activity
+            android:name="chapters.PrivacyPolicyActivity"
+            android:screenOrientation="portrait"/>
+    
+    </application>
 </manifest>

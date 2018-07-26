@@ -1,13 +1,22 @@
 package com.rollncode.basement.application
 
-import android.app.*
-import android.app.Application.*
-import android.content.*
-import android.net.*
-import android.os.*
-import android.support.annotation.*
-import com.rollncode.basement.utility.*
-import java.lang.ref.*
+import android.app.Activity
+import android.app.Application
+import android.app.Application.ActivityLifecycleCallbacks
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Bundle
+import android.os.Handler
+import android.os.Message
+import android.support.annotation.CallSuper
+import android.support.annotation.WorkerThread
+import com.rollncode.basement.utility.ReceiverBus
+import com.rollncode.basement.utility.Utils
+import com.rollncode.basement.utility.newWorkerLooper
+import java.lang.ref.WeakReference
 
 /**
  *
@@ -16,10 +25,10 @@ import java.lang.ref.*
  */
 abstract class BaseApp : Application(), ActivityLifecycleCallbacks {
 
-    val mainHandler by lazy { Handler() }
+    private val mainHandler by lazy { Handler() }
     private val workHandler by lazy { WorkHandler(this) }
-    protected val activityResumePause by lazy { mutableSetOf<String>() }
-    protected val activityCreatedDestroyed by lazy { mutableSetOf<String>() }
+    private val activityResumePause by lazy { mutableSetOf<String>() }
+    private val activityCreatedDestroyed by lazy { mutableSetOf<String>() }
     protected val connectivityManager by lazy { getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager }
 
     override fun onCreate() {
@@ -30,10 +39,10 @@ abstract class BaseApp : Application(), ActivityLifecycleCallbacks {
     }
 
     @WorkerThread
-    abstract fun onInit();
+    abstract fun onInit()
 
     @WorkerThread
-    abstract fun onExit();
+    abstract fun onExit()
 
     abstract fun getInternetStateCode(): Int
 
@@ -89,6 +98,7 @@ abstract class BaseApp : Application(), ActivityLifecycleCallbacks {
     }
 }
 
+@Suppress("PrivatePropertyName")
 internal class WorkHandler(app: BaseApp) : Handler(Utils.newWorkerLooper("AppWorkerHandler", Thread.MAX_PRIORITY)) {
 
     private val WHAT_ASYNC_INIT = 0xA

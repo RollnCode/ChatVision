@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#3fb5b5</color>
+    <color name="colorPrimaryDark">#30989f</color>
+    <color name="colorAccent">#6598ff</color>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+    <color name="toolbarTextColor">@color/white</color>
+    
+    <color name="black">@android:color/black</color>
+    <color name="black_gray">#333</color>
+    <color name="white">@android:color/white</color>
+    <color name="white_alpha">#8fff</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="gray">#888</color>
+    <color name="gray_dark">#555</color>
+    <color name="gray_light">#bbb</color>
+    <color name="gray_alpha">#7bbb</color>
+    <color name="gray_light_alpha">#4bbb</color>
+    <color name="green_light_alpha">#4bdb</color>
+    <color name="blue_light_alpha">#4bbd</color>
+    
+    <color name="incoming_msg_color">@color/blue_light_alpha</color>
+    <color name="outgoing_msg_color">@color/green_light_alpha</color>
 </resources>

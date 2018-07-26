@@ -1,6 +1,7 @@
 package com.rollncode.basement.interfaces
 
-import io.reactivex.disposables.*
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 
 /**
  *
@@ -11,7 +12,7 @@ interface MVPInterface {
 
     val compositeDisposable: CompositeDisposable
 
-    fun add(disposable: Disposable)
+    fun addDisposable(disposable: Disposable)
             = compositeDisposable.add(disposable)
 
     fun dispose()

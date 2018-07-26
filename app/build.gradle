@@ -4,8 +4,11 @@ apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+//    dataBinding {
+//        enabled = true
+//    }
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
 
     compileOptions {
         encoding "UTF-8"
@@ -17,21 +20,36 @@ android {
         applicationId "com.rollncode.chatVision"
 
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 27
 
-        versionCode 1
-        versionName "0"
+        versionCode 5
+        versionName "0.9"
 
         resConfigs "en"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+
+        buildConfigField "String", "QB_APP_ID", "$keystore_201705_qb_app_id"
+        buildConfigField "String", "QB_AUTH_KEY", "$keystore_201705_qb_auth_key"
+        buildConfigField "String", "QB_AUTH_SECRET", "$keystore_201705_qb_auth_secret"
+        buildConfigField "String", "QB_ACCOUNT_KEY", "$keystore_201705_qb_account_key"
+        buildConfigField "String", "QB_CHAT_ENDPOINT", "$keystore_201705_qb_chat_endpoint"
+        buildConfigField "String", "DB_URL", "$keystore_201705_db_url"
+        buildConfigField "String", "DB_PASSWORDS_KEY", "$keystore_201705_db_passwords_key"
     }
     signingConfigs {
         keystore {
-            storeFile file("release.keystore")
+            storeFile file("developer.jks")
 
-            keyAlias "$KEYSTORE_ALIAS"
-            keyPassword "$KEYSTORE_PASS"
-            storePassword "$STORE_PASSWORD"
+            keyAlias "$keystore_201807_dev_alias"
+            keyPassword "$keystore_201807_dev_key"
+            storePassword "$keystore_201807_dev_store"
+//            storeFile file("release.keystore")
+//
+//            keyAlias "$keystore_201807_alias"
+//            keyPassword "$keystore_201807_key"
+//            storePassword "$keystore_201807_store"
         }
     }
     buildTypes {
@@ -43,13 +61,13 @@ android {
         }
         release {
             signingConfig signingConfigs.keystore
-            versionNameSuffix new Date().format(":MMddHH")
+//            versionNameSuffix new Date().format(":MMddHH")
 
             debuggable false
-            minifyEnabled true
-            shrinkResources true
+//            minifyEnabled true
+//            shrinkResources true
             zipAlignEnabled true
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+//            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
     kapt { correctErrorTypes = true }
@@ -61,8 +79,36 @@ android {
 }
 dependencies {
     implementation project(":basement")
+    implementation 'com.android.support:multidex:1.0.3'
 
     testImplementation "junit:junit:4.12"
-    androidTestImplementation "com.android.support.test:runner:1.0.1"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.1"
+    androidTestImplementation "com.android.support.test:runner:1.0.2"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:3.0.2"
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.1") {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+
+    implementation "android.arch.persistence.room:runtime:$archVersion"
+    kapt "android.arch.persistence.room:compiler:$archVersion"
+    implementation "android.arch.persistence.room:rxjava2:$archVersion"
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    kapt "android.arch.lifecycle:compiler:1.1.1"
+
+    implementation "com.airbnb.android:epoxy:2.10.0"
+
+    //noinspection GradleDependency,GradleCompatible
+    implementation "com.google.firebase:firebase-auth:$firebaseVersion"
+    //noinspection GradleDependency
+    implementation "com.google.firebase:firebase-database:$firebaseVersion"
+
+    implementation "com.quickblox:quickblox-android-sdk-chat:$qbSdkVersion"
+    implementation "com.quickblox:quickblox-android-sdk-content:$qbSdkVersion"
+    implementation "com.quickblox:quickblox-android-sdk-messages:$qbSdkVersion"
+    implementation "com.quickblox:quickblox-android-sdk-customobjects:$qbSdkVersion"
+
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 }
+
+apply plugin: 'com.google.gms.google-services'

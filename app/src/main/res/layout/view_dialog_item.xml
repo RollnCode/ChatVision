@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/rootLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/imgCompanionAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/general_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/svg_profile"
+        app:tint="@color/colorAccent"/>
+    
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/general_min"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgCompanionAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/tvSender">
+        
+        <TextView
+            android:id="@+id/tvInMessage"
+            style="@style/Base.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/general_mid"
+            android:background="@drawable/shape_in_msg_background"
+            android:gravity="start"
+            android:padding="@dimen/general_small"/>
+    
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/tvSender"
+        style="@style/Base.Hint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgCompanionAvatar"
+        app:layout_constraintEnd_toStartOf="@+id/imgMyAvatar"
+        tools:text="User 12:20"/>
+    
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/imgMyAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/general_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/svg_profile"
+        app:tint="@color/colorAccent"/>
+    
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/general_min"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgMyAvatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSender">
+        
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imgRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/general_mid"
+            app:tint="@color/colorAccent"
+            app:srcCompat="@drawable/svg_circle"/>
+        
+        <TextView
+            android:id="@+id/tvOutMessage"
+            style="@style/Base.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/general_x_small"
+            android:background="@drawable/shape_out_msg_background"
+            android:gravity="end"
+            android:padding="@dimen/general_small"/>
+    
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

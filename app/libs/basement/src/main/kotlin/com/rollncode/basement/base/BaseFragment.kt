@@ -1,11 +1,16 @@
 package com.rollncode.basement.base
 
-import android.os.*
-import android.support.annotation.*
-import android.support.v4.app.*
-import android.view.*
-import com.rollncode.basement.interfaces.*
-import io.reactivex.disposables.*
+import android.os.Bundle
+import android.support.annotation.CallSuper
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import android.view.ViewGroup
+import com.rollncode.basement.interfaces.AsyncMVPInterface
+import com.rollncode.basement.interfaces.FragmentManagerInterface
+import io.reactivex.disposables.CompositeDisposable
 
 /**
  *
@@ -27,11 +32,11 @@ abstract class BaseFragment : Fragment(), AsyncMVPInterface, FragmentManagerInte
         inflater?.inflate(getMenuLayout(), menu)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, parent: ViewGroup?, b: Bundle?): View?
-            = inflater!!.inflate(getLayoutRes(), parent, false)
+    override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup?, b: Bundle?): View?
+            = inflater.inflate(getLayoutRes(), parent, false)
 
     @Suppress("RedundantOverride")
-    override fun onViewCreated(v: View?, b: Bundle?) {
+    override fun onViewCreated(v: View, b: Bundle?) {
         super.onViewCreated(v, b)
     }
 
@@ -42,13 +47,13 @@ abstract class BaseFragment : Fragment(), AsyncMVPInterface, FragmentManagerInte
     }
 
     @Suppress("RedundantOverride")
-    override fun onSaveInstanceState(b: Bundle?) {
+    override fun onSaveInstanceState(b: Bundle) {
         super.onSaveInstanceState(b)
     }
 
-    open protected fun getMenuLayout(): Int = 0
+    protected open fun getMenuLayout(): Int = 0
 
-    abstract protected fun getLayoutRes(): Int
+    protected abstract fun getLayoutRes(): Int
 
     fun finish(affinity: Boolean = false)
             = if (affinity) activity?.finishAffinity() else activity?.supportFinishAfterTransition()

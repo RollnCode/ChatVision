@@ -30,8 +30,8 @@ fun View.hide(gone: Boolean = true)
 inline val View.isVisible
     get() = visibility == View.VISIBLE
 
-fun TextView.getString()
-        = this.text.toString().trim()
+val TextView.string
+    get() = text.toString().trim()
 
 fun TextView.addFilter(vararg filters: InputFilter) {
     val newFilters = mutableListOf<InputFilter>()

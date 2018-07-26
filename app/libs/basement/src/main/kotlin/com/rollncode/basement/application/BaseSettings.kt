@@ -1,9 +1,10 @@
 package com.rollncode.basement.application
 
-import android.content.*
-import android.preference.*
-import java.lang.*
-import kotlin.reflect.*
+import android.content.Context
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
+import java.lang.IllegalArgumentException
+import kotlin.reflect.KProperty
 
 /**
  *
@@ -20,7 +21,7 @@ abstract class BaseSettings(context: Context, name: String? = null) {
     }
 
     fun prefString(default: String = "") = SettingsDelegate(preferences, default)
-    fun prefLong(default: Long = 0L) = SettingsDelegate(preferences, default)
+    fun prefInt(default: Int = 0) = SettingsDelegate(preferences, default)
     fun prefBoolean(default: Boolean = false) = SettingsDelegate(preferences, default)
     fun prefFloat(default: Float = 0f) = SettingsDelegate(preferences, default)
 }

@@ -1,10 +1,10 @@
 package com.rollncode.basement.utility.extension
 
-import android.app.*
-import android.support.design.widget.*
+import android.app.Activity
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
-import android.view.*
+import android.view.View
 
 /**
  *
@@ -12,7 +12,7 @@ import android.view.*
  * @since 2017.09.01
  */
 fun Activity.showAlert(init: AlertDialog.Builder.() -> Unit): AlertDialog {
-    val builder = android.support.v7.app.AlertDialog.Builder(this)
+    val builder = AlertDialog.Builder(this)
     builder.init()
 
     return builder.show()
@@ -25,8 +25,6 @@ fun View?.showSnackBar(text: CharSequence, duration: Int = Snackbar.LENGTH_LONG,
     this?.parent ?: return
 
     val snackBar = Snackbar.make(this, text, duration)
-    if (block != null) {
-        snackBar.block()
-    }
+    block?.let { snackBar.it() }
     snackBar.show()
 }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <android.support.constraint.Guideline
+        android:id="@+id/glVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8"/>
+    
+    <TextView
+        android:id="@+id/tvDialogName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="?attr/aTextColor"
+        android:textSize="@dimen/font_18"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/glVertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Heisenberg"/>
+    
+    <TextView
+        android:id="@+id/tvLastMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/general_small"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/font_14"
+        app:layout_constraintEnd_toEndOf="@+id/glVertical"
+        app:layout_constraintStart_toStartOf="@+id/tvDialogName"
+        app:layout_constraintTop_toBottomOf="@+id/tvDialogName"
+        tools:text="I am the danger"/>
+    
+    <ImageView
+        android:id="@+id/ivMessageStatus"
+        android:layout_width="@dimen/general_large"
+        android:layout_height="@dimen/general_large"
+        android:layout_marginEnd="@dimen/general_small"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTime"
+        app:layout_constraintEnd_toStartOf="@+id/tvTime"
+        tools:ignore="ContentDescription"/>
+    
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textColor="?attr/aTextGreyColor"
+        android:textSize="@dimen/font_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/glVertical"
+        app:layout_constraintTop_toTopOf="@+id/tvDialogName"
+        tools:text="Dec 17"/>
+    
+    <TextView
+        android:id="@+id/tvUnreadMessages"
+        android:layout_width="@dimen/general_larger"
+        android:layout_height="@dimen/general_larger"
+        android:background="@drawable/shape_circle_blue_stroke_gray"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTime"
+        tools:text="2"/>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/general_stroke_thin"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</merge>

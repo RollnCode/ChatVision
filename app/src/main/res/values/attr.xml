@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BaseAppTheme">
+        <attr name="aTextColor" format="reference"/>
+        <attr name="aBackGroundColor" format="reference"/>
+        <attr name="aToolbarTextColor" format="reference"/>
+        <attr name="aControlNormal" format="reference"/>
+        <attr name="aTextGreyColor" format="reference"/>
+    </declare-styleable>
+    
+</resources>

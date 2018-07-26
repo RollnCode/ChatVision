@@ -3,12 +3,14 @@ package com.rollncode.basement.utility.extension
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Point
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
 import android.support.annotation.PluralsRes
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
+import android.view.WindowManager
 
 /**
  *
@@ -44,4 +46,11 @@ fun Context.getPlurals(@PluralsRes id: Int, quantity: Int, vararg params: Any): 
 }
 
 fun Fragment.getPlurals(@PluralsRes id: Int, quantity: Int, vararg params: Any)
-        = context.getPlurals(id, quantity, *params)
+        = context?.getPlurals(id, quantity, *params) ?: ""
+
+fun Context.getScreenSize(): Point {
+    val display = (getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+    val size = Point()
+    display.getSize(size)
+    return size
+}
